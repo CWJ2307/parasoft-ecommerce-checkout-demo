@@ -15,6 +15,24 @@ The demo consists of:
 
 ---
 
+## Screenshots
+
+### Store Front
+
+![Store Front](docs/storefront.png)
+
+### Checkout Modal
+
+![Checkout Modal](docs/checkout-modal.png)
+
+### Admin Dashboard
+
+![Admin Dashboard](docs/admin-dashboard.png)
+
+### Payment Gateway
+
+![Payment Gateway](docs/payment-gateway.png)
+
 ## Architecture
 
 ### Payment Modes
