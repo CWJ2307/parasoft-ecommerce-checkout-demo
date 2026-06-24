@@ -253,6 +253,201 @@
 	.gateway-btn{
 	  background:#0f766e;
 	}
+	
+	.inv-card {
+	  background: white;
+	  padding: 20px;
+	  border-radius: 16px;
+	  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+	  margin-top: 10px;
+	}
+
+	.inv-table {
+	  width: 100%;
+	  border-collapse: collapse;
+	}
+
+	.inv-table th {
+	  text-align: left;
+	  padding: 14px;
+	  background: #f3f6ff;
+	  color: #1f2937;
+	  font-weight: 600;
+	}
+
+	.inv-table td {
+	  padding: 14px;
+	  border-bottom: 1px solid #eee;
+	}
+
+	.product-name {
+	  font-weight: 600;
+	}
+
+	.stock-badge {
+	  padding: 6px 10px;
+	  border-radius: 999px;
+	  background: #e5f3ff;
+	  color: #2563eb;
+	  font-weight: 600;
+	}
+
+	.stock-badge.low {
+	  background: #fee2e2;
+	  color: #dc2626;
+	}
+
+	.action-cell {
+	  display: flex;
+	  gap: 10px;
+	  align-items: center;
+	}
+
+	.stock-input {
+	  width: 70px;
+	  padding: 6px;
+	  border: 1px solid #ddd;
+	  border-radius: 8px;
+	}
+
+	.update-btn {
+	  background: #2563eb;
+	  color: white;
+	  border: none;
+	  padding: 6px 12px;
+	  border-radius: 8px;
+	  cursor: pointer;
+	}
+
+	.update-btn:hover {
+	  background: #1d4ed8;
+	}
+	
+	.add-product-card {
+	  background: white;
+	  padding: 20px;
+	  border-radius: 16px;
+	  margin-bottom: 20px;
+	  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+	}
+
+	.add-product-card input {
+	  display: block;
+	  width: 100%;
+	  margin-bottom: 10px;
+	  padding: 10px;
+	  border-radius: 8px;
+	  border: 1px solid #ddd;
+	}
+
+	.add-product-card button {
+	  background: #16a34a;
+	  color: white;
+	  padding: 10px 14px;
+	  border: none;
+	  border-radius: 10px;
+	  cursor: pointer;
+	}
+
+	.add-product-card button:hover {
+	  background: #15803d;
+	}
+	
+	.panel{
+	  background:#fff;
+	  padding:24px;
+	  border-radius:18px;
+	  box-shadow:0 10px 30px rgba(0,0,0,0.06);
+	  margin-bottom:20px;
+	}
+
+	.panel h2{
+	  margin-bottom:16px;
+	  font-size:20px;
+	}
+
+	.form-grid{
+	  display:grid;
+	  grid-template-columns:repeat(3,1fr);
+	  gap:12px;
+	  margin-bottom:12px;
+	}
+
+	.form-grid input{
+	  padding:12px;
+	  border-radius:10px;
+	  border:1px solid #e5e7eb;
+	}
+
+	.file-box{
+	  grid-column:span 3;
+	  padding:10px;
+	  border:1px dashed #cbd5e1;
+	  border-radius:10px;
+	}
+
+	.primary-btn{
+	  background:#2563eb;
+	  color:white;
+	  border:none;
+	  padding:12px 18px;
+	  border-radius:10px;
+	  cursor:pointer;
+	  font-weight:600;
+	}
+
+	.primary-btn:hover{
+	  background:#1d4ed8;
+	}
+
+	.inv-table{
+	  width:100%;
+	  border-collapse:collapse;
+	}
+
+	.inv-table th{
+	  text-align:left;
+	  padding:12px;
+	  background:#f1f5f9;
+	}
+
+	.inv-table td{
+	  padding:12px;
+	  border-bottom:1px solid #eee;
+	}
+
+	.stock-pill{
+	  padding:4px 10px;
+	  border-radius:999px;
+	  background:#e0f2fe;
+	  color:#0369a1;
+	  font-weight:600;
+	}
+
+	.stock-low{
+	  background:#fee2e2;
+	  color:#dc2626;
+	}
+
+	.input-stock{
+	  width:80px;
+	  padding:6px;
+	  border-radius:8px;
+	  border:1px solid #ddd;
+	}
+
+	.btn-update{
+	  background:#10b981;
+	  color:white;
+	  border:none;
+	  padding:6px 12px;
+	  border-radius:8px;
+	  cursor:pointer;
+	}
+
+	.btn-update:hover{
+	  background:#059669;
+	}
 
     .close{
       float:right;
@@ -326,6 +521,48 @@
 
 </div>
 
+<div class="control-panel">
+  <div>
+    <h2>Inventory Status</h2>
+    <p>Live stock from Inventory Service</p>
+  </div>
+
+  <button onclick="refreshAll()" class="mode-btn">
+    Refresh Inventory
+  </button>
+</div>
+
+<!-- ================= ADD PRODUCT ================= -->
+<div class="panel">
+  <h2>➕ Add New Product</h2>
+
+  <div class="form-grid">
+
+    <input id="p-name" placeholder="Product Name" />
+    <input id="p-price" type="number" placeholder="Price (RM)" />
+    <input id="p-stock" type="number" placeholder="Stock Quantity" />
+
+    <div class="file-box">
+      <input type="file" id="p-image" />
+      <small>Upload product image (optional)</small>
+    </div>
+
+  </div>
+
+  <button class="primary-btn" onclick="addProduct()">
+    Create Product
+  </button>
+</div>
+
+<!-- ================= INVENTORY ================= -->
+<div class="panel">
+  <h2>📦 Inventory Management</h2>
+
+  <div id="inventoryList"></div>
+</div>
+
+<div id="inventoryList"></div>
+
 <div class="summary">
 
   <div class="card orders-card">
@@ -371,6 +608,7 @@
   <thead>
     <tr>
       <th>Order ID</th>
+	  <th>Transaction ID</th>
       <th>Customer</th>
       <th>Email</th>
       <th>Total</th>
@@ -417,6 +655,109 @@ async function loadOrders() {
   renderSummary();
 
   renderTable();
+}
+
+async function addProduct() {
+  const name = document.getElementById('p-name').value;
+  const price = document.getElementById('p-price').value;
+  const stock = document.getElementById('p-stock').value;
+  const file = document.getElementById('p-image').files[0];
+
+  let imageBase64 = "";
+
+  if (file) {
+    imageBase64 = await toBase64(file);
+  }
+
+  const res = await fetch('/api/admin/product/add', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      name,
+      price,
+      stock,
+      image: imageBase64
+    })
+  });
+
+  await res.json();
+
+  alert("Product Added!");
+
+  loadInventory();
+}
+
+function toBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+  });
+}
+
+async function updateStock(id) {
+  const stock = document.getElementById(`stock-${id}`).value;
+
+  await fetch('/api/admin/inventory/update', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      id,
+      stock
+    })
+  });
+
+  loadInventory();
+}
+
+async function loadInventory() {
+  const res = await fetch('/api/inventory');
+  const data = await res.json();
+
+  let html = `
+  <table class="inv-table">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Stock</th>
+        <th>Update</th>
+      </tr>
+    </thead>
+    <tbody>
+  `;
+
+  Object.keys(data).forEach(id => {
+    const item = data[id];
+    const low = item.stock <= 3;
+
+    html += `
+      <tr>
+        <td><b>${item.name}</b></td>
+
+        <td>
+          <span class="stock-pill ${low ? 'stock-low' : ''}">
+            ${item.stock}
+          </span>
+        </td>
+
+        <td style="display:flex;gap:8px;">
+          <input class="input-stock" id="stock-${id}" value="${item.stock}" />
+          <button class="btn-update" onclick="updateStock(${id})">
+            Save
+          </button>
+        </td>
+      </tr>
+    `;
+  });
+
+  html += `</tbody></table>`;
+
+  document.getElementById('inventoryList').innerHTML = html;
 }
 
 function renderSummary() {
@@ -480,6 +821,10 @@ function renderTable() {
       <tr>
 
         <td>${order.orderId}</td>
+		
+		<td>
+		  ${order.transactionId || '-'}
+		</td>
 
         <td>${order.name}</td>
 
@@ -511,6 +856,11 @@ function renderTable() {
       </tr>
     `;
   });
+}
+
+async function refreshAll() {
+  await loadInventory();
+  await loadOrders();
 }
 
 async function loadSettings() {
@@ -556,6 +906,8 @@ function viewOrderById(orderId) {
   html += `
     <hr><br>
     <div><b>Total:</b> RM ${order.total}</div>
+	<div><b>Order ID:</b> ${order.orderId}</div>
+    <div><b>Transaction ID:</b> ${order.transactionId}</div>
     <div><b>Status:</b> ${order.status}</div>
     <div><b>Payment Mode:</b> ${order.paymentMode || '-'}</div>
     <div><b>Payment Message:</b> ${order.paymentMessage || '-'}</div>
@@ -573,9 +925,10 @@ function closeModal() {
 
 loadSettings();
 loadOrders();
+loadInventory();
 
 setInterval(loadOrders, 5000);
-
+setInterval(loadInventory, 5000);
 </script>
 
 </body>

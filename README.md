@@ -15,6 +15,24 @@ The demo consists of:
 
 ---
 
+## Key Capabilities
+
+✓ E-Commerce Checkout
+
+✓ Inventory Validation
+
+✓ Product Management
+
+✓ Payment Gateway Integration
+
+✓ Service Virtualization
+
+✓ Fault Simulation
+
+✓ Admin Dashboard
+
+✓ Shift-Left Testing
+
 ## Screenshots
 
 ### Store Front
@@ -34,6 +52,46 @@ The demo consists of:
 ![Payment Gateway](docs/payment-gateway.png)
 
 ## Architecture
+
+### Checkout Flow
+
+```text
+Customer
+    ↓
+Add Product To Cart
+    ↓
+Checkout
+    ↓
+Inventory Validation
+    ↓
+Payment Processing
+    ↓
+Order Creation
+    ↓
+Inventory Deduction
+    ↓
+Payment Result
+
+```
+---
+
+
+### Inventory Validation Flow
+
+Before processing payment, the application validates inventory availability.
+
+```text
+Cart Items
+    ↓
+Inventory Validation
+    ↓
+Stock Available?
+   ├─ YES → Continue Payment
+   └─ NO  → Return Insufficient Stock
+
+```
+---
+
 
 ### Payment Modes
 
@@ -209,7 +267,6 @@ Each order contains:
 | 5555555555554444 | Timeout              |
 | 4444444444444444 | Fraud                |
 | 6666666666666666 | Blocked              |
-| 7777777777777777 | Insufficient Balance |
 
 ---
 
@@ -313,6 +370,30 @@ Insufficient Balance
 
 ---
 
+## Repository Structure
+
+```text
+parasoft-ecommerce-checkout-demo
+│
+├── public
+│   ├── index.html
+│   ├── admin.html
+│   ├── styles.css
+│   └── images
+│
+├── docs
+│   ├── storefront.png
+│   ├── admin-dashboard.png
+│   ├── checkout-modal.png
+│   └── payment-gateway.png
+│
+├── server.js
+├── package.json
+└── README.md
+
+```
+---
+
 ## Installation
 
 ### Clone Repository
@@ -343,17 +424,70 @@ node server.js
 
 ### Store Front
 
+URL:
 ```text
 http://localhost:3001
 ```
+
+* Product Listing
+* Product Images
+* Live Inventory Display
+* Shopping Cart
+* Checkout Modal
+* Order Summary
+* Payment Status Display
 
 ---
 
 ### Admin Dashboard
 
+URL：
 ```text
 http://localhost:3001/admin.html
 ```
+
+* Total Orders
+* Total Revenue
+* Approved Transactions
+* Declined Transactions
+* Timeout Transactions
+* Inventory Management
+* Product Management
+* Search Orders
+* Payment Mode Display
+* Order Details View
+* Reinitialize Demo Data
+
+---
+## Admin Capabilities
+
+### Inventory Management
+
+The Admin Dashboard provides real-time inventory management.
+
+Features:
+
+* View Current Stock
+* Update Stock Quantity
+* Add New Products
+* Upload Product Images
+* Prevent Overselling
+* Live Inventory Refresh
+
+---
+
+### Product Management
+
+Administrators can create products dynamically without modifying source code.
+
+Supported fields:
+
+* Product Name
+* Product Price
+* Product Stock
+* Product Image
+
+New products are immediately available in the Store Front.
 
 ---
 
@@ -398,41 +532,51 @@ Payment Gateway
 
 ## Technology Stack
 
-Frontend
+### Frontend
 
 * HTML
 * CSS
 * JavaScript
 
-Backend
+### Backend
 
 * Node.js
 * Express.js
 
-Service Virtualization
+### Testing & Service Virtualization
 
 * Parasoft Virtualize
-
-Testing
-
 * Postman
 * Parasoft SOAtest
 
 ---
 
-## Future Enhancements
+## Roadmap
 
-Planned improvements:
+### Current Limitations
 
-* Transaction ID Support
+This demo is intentionally lightweight and currently uses:
+
+* In-Memory Product Storage
+* In-Memory Inventory Storage
+* In-Memory Order Storage
+
+Data will be reset whenever the application restarts.
+
+## Planned Enhancements
+
+Planned upgrades:
+
+* MySQL Persistence
+* PostgreSQL Persistence
+* JWT Authentication
+* User Management
+* Inventory Service API
 * Refund Processing
 * Payment History API
-* Inventory Service
-* Database Persistence
-* User Authentication
-* JWT Security
-* Automated Test Suite
-* Playwright Integration
+* Playwright Automation Suite
+* Docker Support
+* Kubernetes Deployment
 
 ---
 
